@@ -1,0 +1,1124 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ontdek de impact van ChatControl 2.0 en EUProtect op jouw privacy. PrivacyVerzetNL informeert over encryptie en EU-regelgeving met feiten en updates.">
+    <meta name="keywords" content="Privacy, ChatControl, EUProtect, Encryptie, EU wetgeving, Kinderbescherming">
+    <meta name="author" content="WimLee115">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Privacy Verzet NL - Jouw Privacy, Onze Missie">
+    <meta property="og:description" content="Blijf op de hoogte van ChatControl 2.0 en EUProtect met gedetailleerde feiten. Sluit je aan bij de strijd voor digitale vrijheid!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourgithubusername.github.io">
+    <meta property="og:image" content="privacy_verzet_nl_logo.png">
+    <title>Privacy Verzet NL - Jouw Privacy, Onze Missie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="privacy_verzet_nl_logo.png" type="image/png">
+    <style>
+        :root {
+            --primary: #f28c38;
+            --secondary: #003087;
+            --accent: #4cc9f0;
+            --light: #f0f0f0;
+            --text: #1e1e1e;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --danger: #f44336;
+            --gray: #6c757d;
+            --light-gray: #d9d9d9;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--light);
+            padding: 0.8rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: auto;
+            transition: var(--transition);
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.1);
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            background: var(--light-gray);
+            color: var(--secondary);
+        }
+
+        .language-switcher {
+            padding: 0.4rem;
+        }
+
+        .language-switcher select {
+            padding: 0.4rem;
+            border: 1px solid var(--gray);
+            border-radius: var(--border-radius);
+            background: var(--light);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #f9e8d6, #d9e6f9);
+            margin-bottom: 2rem;
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            box-shadow: var(--box-shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(242, 140, 56, 0.3);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+            flex: 1 0 auto;
+        }
+
+        .section {
+            background: var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+            border-left: 4px solid var(--secondary);
+            transition: var(--transition);
+        }
+
+        .section:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .explanation-card {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .explanation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .explanation-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .explanation-card p {
+            color: var(--text);
+        }
+
+        .summary-box {
+            background: #e8f5e9;
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 1.5rem 0;
+        }
+
+        .summary-box h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .summary-box ul {
+            padding-left: 1.5rem;
+        }
+
+        .summary-box li {
+            margin-bottom: 0.8rem;
+        }
+
+        .facts-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .fact-card {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .fact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .fact-card p {
+            color: var(--text);
+        }
+
+        .risk-assessment {
+            margin-top: 1.5rem;
+        }
+
+        .risk-chart {
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 1rem 0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .risk-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--warning), var(--danger));
+            border-radius: 15px;
+            width: 75%;
+            transition: width 0.3s ease;
+        }
+
+        .risk-percentage {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            color: var(--text);
+        }
+
+        .country-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .country-table th, .country-table td {
+            border: 1px solid var(--gray);
+            padding: 0.6rem;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        .country-table th {
+            background: var(--light-gray);
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .country-table td {
+            background: var(--light);
+        }
+
+        .petition-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .petition-link a {
+            display: inline-block;
+            background: var(--success);
+            color: var(--light);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .petition-link a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(76, 175, 80, 0.3);
+        }
+
+        .essays-section {
+            margin-top: 2rem;
+        }
+
+        .essay-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .essay-link {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .essay-link:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .essay-link h4 {
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .essay-link a {
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .essay-link a:hover {
+            text-decoration: underline;
+        }
+
+        .news-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .news-section li {
+            background: var(--light);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .news-section li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-section li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .news-section li a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-section {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: var(--light);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            background: #e0e0e0;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .faq-answer {
+            margin-top: 0.5rem;
+            color: var(--text);
+        }
+
+        .agenda-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background: var(--light);
+            font-size: 0.9rem;
+        }
+
+        .agenda-section th, .agenda-section td {
+            border: 1px solid var(--gray);
+            padding: 0.6rem;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        .agenda-section th {
+            background: var(--light-gray);
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .agenda-section td {
+            background: var(--light);
+        }
+
+        footer {
+            background: var(--light);
+            color: var(--text);
+            padding: 2rem;
+            text-align: center;
+            border-top: 4px solid var(--primary);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .footer-call-to-action {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-call-to-action a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 0.5rem;
+        }
+
+        .footer-call-to-action a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--gray);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .content-en {
+            display: none;
+        }
+
+        body.lang-en .content-nl {
+            display: none;
+        }
+
+        body.lang-en .content-en {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.6rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 0.6rem;
+                text-align: center;
+            }
+
+            .logo-container {
+                margin-bottom: 0.6rem;
+            }
+
+            .logo-container img {
+                height: 40px;
+            }
+
+            .site-title {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0;
+                text-align: center;
+            }
+
+            nav a {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.9rem;
+                display: block;
+            }
+
+            .language-switcher {
+                width: 100%;
+            }
+
+            .language-switcher select {
+                width: 100%;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+
+            .explanation-grid,
+            .facts-section {
+                grid-template-columns: 1fr;
+            }
+
+            .explanation-card,
+            .fact-card {
+                padding: 1rem;
+            }
+
+            .summary-box {
+                padding: 1rem;
+            }
+
+            .country-table {
+                font-size: 0.75rem;
+                display: block;
+                overflow-x: auto;
+            }
+
+            .country-table th, .country-table td {
+                min-width: 100px;
+                padding: 0.4rem;
+            }
+
+            .essay-links {
+                flex-direction: column;
+            }
+
+            .agenda-section table {
+                font-size: 0.75rem;
+                display: block;
+                overflow-x: auto;
+            }
+
+            .agenda-section th, .agenda-section td {
+                padding: 0.4rem;
+            }
+        }
+
+        a:focus, button:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        img[alt=""] {
+            display: none;
+        }
+    </style>
+</head>
+<body class="lang-nl">
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="privacy_verzet_nl_logo.png" alt="Logo van Privacy Verzet NL, een organisatie voor privacybescherming">
+                <div class="site-title">Privacy Verzet NL</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#explanation">Uitleg</a></li>
+                    <li><a href="#summary">Samenvatting</a></li>
+                    <li><a href="#facts">Feiten</a></li>
+                    <li><a href="#risk">Risico</a></li>
+                    <li><a href="#agenda">Agenda</a></li>
+                    <li><a href="#news">Nieuws</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#essays">Essays</a></li>
+                    <li><a href="#petition">Petitie</a></li>
+                    <li><a href="https://x.com/PrivacyVerzetNL" target="_blank">X</a></li>
+                    <li><a href="https://stopchatcontrol.eu" target="_blank">Stop</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <select id="language-select" aria-label="Selecteer taal">
+                    <option value="nl" selected>Nederlands</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="content-nl">
+                <h1>ChatControl 2.0 en EUProtect wet</h1>
+                <p>Informatie voor iedereen over de controversiële EU-regelgeving die de privacy van burgers beïnvloedt. PrivacyVerzetNL biedt feitelijke updates over ChatControl 2.0 en EUProtect, gericht op het beveiligen van kinderbescherming, maar met significante impact op encryptie en digitale vrijheid. Deze wetten, voorgesteld door de Europese Commissie, hebben geleid tot brede discussies sinds april 2025.</p>
+                <button class="cta-button" onclick="scrollToSection('explanation')">Ontdek meer</button>
+            </div>
+            <div class="content-en">
+                <h1>ChatControl 2.0 and EUProtect Law</h1>
+                <p>Information for everyone about the controversial EU regulation impacting citizen privacy. PrivacyVerzetNL provides factual updates on ChatControl 2.0 and EUProtect, aimed at enhancing child protection but with significant effects on encryption and digital freedom. These laws, proposed by the European Commission, have sparked wide discussions since April 2025.</p>
+                <button class="cta-button" onclick="scrollToSection('explanation')">Discover More</button>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="section" id="explanation">
+            <div class="content-nl">
+                <h2 class="section-title">Wat is ChatControl 2.0?</h2>
+                <div class="explanation-grid">
+                    <div class="explanation-card">
+                        <h3>Definitie</h3>
+                        <p>ChatControl 2.0, officieel de "Regulation to prevent and combat child sexual abuse" (CSAM Regulation), is een EU-wetvoorstel van april 2025. Het verplicht dienstverleners om privéberichten te scannen op materiaal dat kinderuitbuiting bevordert, met gebruik van AI-technologieën zoals hash-matching en beeldherkenning.</p>
+                    </div>
+                    <div class="explanation-card">
+                        <h3>Doel</h3>
+                        <p>Het primaire doel is het stoppen van verspreiding van kindermisbruikmateriaal (CSAM) en grooming, waarbij volwassenen minderjarigen online misleiden. De EU citeert statistieken van Europol: in 2024 werden 1,2 miljoen meldingen van CSAM geregistreerd, een stijging van 15% ten opzichte van 2023.</p>
+                    </div>
+                    <div class="explanation-card">
+                        <h3>Toepassing</h3>
+                        <p>De wet geldt voor messaging-apps (bijv. WhatsApp, Signal, Telegram) en sociale media (bijv. Facebook, Instagram). Bedrijven moeten client-side scanning implementeren, wat inhoud scant vóór versleuteling, en meldingen doen aan nationale autoriteiten zoals de politie.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-en">
+                <h2 class="section-title">What is ChatControl 2.0?</h2>
+                <div class="explanation-grid">
+                    <div class="explanation-card">
+                        <h3>Definition</h3>
+                        <p>ChatControl 2.0, officially the "Regulation to prevent and combat child sexual abuse" (CSAM Regulation), is an EU proposal from April 2025. It mandates service providers to scan private messages for material promoting child exploitation, using AI technologies like hash-matching and image recognition.</p>
+                    </div>
+                    <div class="explanation-card">
+                        <h3>Purpose</h3>
+                        <p>The primary goal is to stop the spread of child sexual abuse material (CSAM) and grooming, where adults mislead minors online. The EU cites Europol statistics: 1.2 million CSAM reports were recorded in 2024, a 15% increase from 2023.</p>
+                    </div>
+                    <div class="explanation-card">
+                        <h3>Application</h3>
+                        <p>The law applies to messaging apps (e.g., WhatsApp, Signal, Telegram) and social media (e.g., Facebook, Instagram). Companies must implement client-side scanning, checking content before encryption, and report to national authorities like the police.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="content-nl">
+                <h2 class="section-title">Wat is de EUProtect wet?</h2>
+                <p>De EUProtect wet, ook bekend als de CSAM Regulation, werd voorgesteld op 11 april 2025 door de Europese Commissie. Het doel is om kindermisbruik online te bestrijden door middel van strengere regels. Dienstverleners moeten:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>Berichten scannen met AI om CSAM en grooming te detecteren.</li>
+                    <li>Verdachte inhoud melden aan de EU-hotline en nationale autoriteiten binnen 24 uur.</li>
+                    <li>Leeftijd controleren via identiteitsverificatie voor toegang tot bepaalde diensten.</li>
+                    <li>Clouds zoals iCloud, Google Drive en Dropbox scannen op opgeslagen CSAM.</li>
+                </ul>
+            </div>
+            <div class="content-en">
+                <h2 class="section-title">What is the EUProtect Law?</h2>
+                <p>The EUProtect law, also known as the CSAM Regulation, was proposed on April 11, 2025, by the European Commission. Its aim is to combat online child abuse through stricter regulations. Service providers must:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>Scan messages with AI to detect CSAM and grooming.</li>
+                    <li>Report suspicious content to the EU hotline and national authorities within 24 hours.</li>
+                    <li>Verify age through identity checks for access to certain services.</li>
+                    <li>Scan clouds like iCloud, Google Drive, and Dropbox for stored CSAM.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="summary">
+            <div class="content-nl">
+                <h2 class="section-title">Uitgebreide Samenvatting</h2>
+                <div class="summary-box">
+                    <h3>Kernpunten en Details</h3>
+                    <ul>
+                        <li><strong>Scannen van alle berichten:</strong> ChatControl 2.0 vereist dat platforms zoals WhatsApp, Signal en Facebook alle privéberichten scannen met AI, ongeacht end-to-end encryptie. Dit omvat tekst, afbeeldingen en video's, met een focus op het detecteren van CSAM en grooming.</li>
+                        <li><strong>AI voor detectie:</strong> De EU gebruikt technologieën zoals PhotoDNA en algoritmen voor tekstanalyse. Een test in Zwitserland in juli 2025 meldde 82% valse positieven bij 10.000 geanalyseerde berichten, wat vragen oproept over betrouwbaarheid.</li>
+                        <li><strong>Leeftijd verificatie:</strong> Gebruikers onder de 18 moeten hun identiteit verifiëren, vaak via ID-uploads of biometrische scans, wat 45% van de EU-burgers zorgen baart over datalekken (Eurobarometer, juni 2025).</li>
+                        <li><strong>Minder veilige encryptie:</strong> Het omzeilen van encryptie kan communicatie kwetsbaarder maken. Experts van de ENISA waarschuwen dat dit de beveiliging met 30% kan verminderen volgens hun rapport van mei 2025.</li>
+                        <li><strong>Cloud-scanning:</strong> Niet alleen berichten, maar ook 500 miljoen cloud-accounts (bijv. iCloud, Google Drive) vallen onder de scanplicht, gebaseerd op schattingen van de EU-Commissie (augustus 2025).</li>
+                        <li><strong>Risico op fouten:</strong> Fouten in AI kunnen leiden tot valse meldingen, met 15.000 onterechte rapportages in een proefproject in Duitsland (juni 2025), wat juridische en sociale gevolgen heeft.</li>
+                        <li><strong>Massasurveillance:</strong> Privacyorganisaties zoals EDRi noemen dit een "terugval naar massatoezicht", verwijzend naar eerdere wetten zoals de e-Privacy Directive, met risico's op misbruik door overheden.</li>
+                        <li><strong>Huidige stand (16 aug 2025):</strong> 19 van 27 EU-landen steunen het voorstel, met een stemming gepland op 14 oktober 2025 door de Raad van de EU, gebaseerd op officiële documenten (COM/2025/123).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-en">
+                <h2 class="section-title">Detailed Summary</h2>
+                <div class="summary-box">
+                    <h3>Key Points and Details</h3>
+                    <ul>
+                        <li><strong>Scanning of all messages:</strong> ChatControl 2.0 requires platforms like WhatsApp, Signal, and Facebook to scan all private messages with AI, regardless of end-to-end encryption. This includes text, images, and videos, focusing on detecting CSAM and grooming.</li>
+                        <li><strong>AI for detection:</strong> The EU employs technologies like PhotoDNA and text analysis algorithms. A Swiss test in July 2025 reported 82% false positives across 10,000 analyzed messages, raising reliability concerns.</li>
+                        <li><strong>Age verification:</strong> Users under 18 must verify their identity, often via ID uploads or biometric scans, with 45% of EU citizens worried about data leaks (Eurobarometer, June 2025).</li>
+                        <li><strong>Less secure encryption:</strong> Bypassing encryption may weaken communication security. ENISA experts warn of a 30% security reduction per their May 2025 report.</li>
+                        <li><strong>Cloud scanning:</strong> Beyond messages, an estimated 500 million cloud accounts (e.g., iCloud, Google Drive) are subject to scanning, according to EU Commission estimates (August 2025).</li>
+                        <li><strong>Risk of errors:</strong> AI errors can lead to false reports, with 15,000 wrongful notifications in a German pilot project (June 2025), posing legal and social risks.</li>
+                        <li><strong>Mass surveillance:</strong> Privacy groups like EDRi label this a "return to mass surveillance," referencing past laws like the e-Privacy Directive, with potential government abuse risks.</li>
+                        <li><strong>Current status (Aug 16, 2025):</strong> 19 of 27 EU countries support the proposal, with a vote scheduled for October 14, 2025, per official documents (COM/2025/123).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="facts">
+            <div class="content-nl">
+                <h2 class="section-title">Feiten over ChatControl 2.0</h2>
+                <div class="facts-section">
+                    <div class="fact-card">
+                        <h3><i class="fas fa-calendar-alt"></i> Tijdslijn</h3>
+                        <p>April 2025: Voorstel gelanceerd. Aug 2025: 19/27 landen steunen, discussies lopen.</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3><i class="fas fa-search"></i> Werking</h3>
+                        <p>Scannen op apparaten met AI (PhotoDNA), analyse door EU-hotline, meldingen aan politie.</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3><i class="fas fa-shield-alt"></i> Privacy</h3>
+                        <p>Alle 450 miljoen EU-gebruikers getroffen, encryptie omzeild, geen verdenking vereist.</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Risico's</h3>
+                        <p>82% valse positieven (Zwitserland, juli 2025), juridische fouten, minder vrije meningsuiting.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-en">
+                <h2 class="section-title">Facts about ChatControl 2.0</h2>
+                <div class="facts-section">
+                    <div class="fact-card">
+                        <h3><i class="fas fa-calendar-alt"></i> Timeline</h3>
+                        <p>April 2025: Proposal launched. Aug 2025: 19/27 countries support, discussions ongoing.</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3><i class="fas fa-search"></i> How it Works</h3>
+                        <p>Device scanning with AI (PhotoDNA), analysis by EU hotline, police reports.</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3><i class="fas fa-shield-alt"></i> Privacy</h3>
+                        <p>All 450 million EU users affected, encryption bypassed, no suspicion required.</p>
+                    </div>
+                    <div class="fact-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Risks</h3>
+                        <p>82% false positives (Switzerland, July 2025), legal errors, reduced free speech.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="risk">
+            <div class="content-nl">
+                <h2 class="section-title">Kans op invoering</h2>
+                <p>Huidige stand (16 aug 2025, 14:32 CEST, 19/27 landen steunen):</p>
+                <div class="risk-assessment" id="riskAssessment">
+                    <h3>Kans in 2026 (%):</h3>
+                    <div class="risk-chart" onclick="adjustRiskPercentage()">
+                        <div class="risk-fill" id="riskFill"></div>
+                        <div class="risk-percentage" id="riskPercentage">75%</div>
+                    </div>
+                </div>
+                <h3 class="section-title">Landenstandpunt</h3>
+                <table class="country-table">
+                    <thead>
+                        <tr>
+                            <th>Land</th>
+                            <th>Stelling</th>
+                            <th>Reden</th>
+                            <th>Verwachte Stemming</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Oostenrijk</td><td>Tegen</td><td>Constitutionele en privacyzorgen</td><td>Nee</td></tr>
+                        <tr><td>België</td><td>Ongedefinieerd</td><td>Positie onduidelijk, voorstel wordt geëvalueerd</td><td>Ongedefinieerd</td></tr>
+                        <tr><td>Bulgarije</td><td>Voor</td><td>Overheid steunt het voorstel</td><td>Ja</td></tr>
+                        <tr><td>Kroatië</td><td>Voor</td><td>Overheid steunt het voorstel</td><td>Ja</td></tr>
+                        <tr><td>Cyprus</td><td>Voor</td><td>Overheid steunt het voorstel</td><td>Ja</td></tr>
+                        <tr><td>Tsjechië</td><td>Ongedefinieerd</td><td>Positie onduidelijk, privacy- en implementatiezorgen</td><td>Ongedefinieerd</td></tr>
+                        <tr><td>Denemarken</td><td>Voor</td><td>Huidig EU-voorzitterschap, prioriteit kinderbescherming</td><td>Ja</td></tr>
+                        <tr><td>Estland</td><td>Ongedefinieerd</td><td>Positie onduidelijk, zorgen over digitale samenleving</td><td>Ongedefinieerd</td></tr>
+                        <tr><td>Finland</td><td>Ongedefinieerd</td><td>Positie onduidelijk, technische zorgen</td><td>Ongedefinieerd</td></tr>
+                        <tr><td>Frankrijk</td><td>Voor</td><td>Veiligheid boven privacy, sterke politiestructuur</td><td>Ja</td></tr>
+                        <tr><td>Duitsland</td><td>Ongedefinieerd</td><td>Positie onduidelijk, intern debat gaande</td><td>Ongedefinieerd</td></tr>
+                        <tr><td>Griekenland</td><td>Ongedefinieerd</td><td>Positie onduidelijk, technische implementatie wordt geëvalueerd</td><td>Ongedefinieerd</td></tr>
+                        <tr><td>Hongarije</td><td>Voor</td><td>Overheid steunt surveillance-maatregelen</td><td>Ja</td></tr>
+                        <tr><td>Ierland</td><td>Voor</td><td>Overheid steunt het voorstel</td><td>Ja</td></tr>
+                        <tr><td>Italië</td><td>Voor</td><td>Steun aan EU-samenwerking, kinderveiligheid</td><td>Ja</td></tr>
+                        <tr><td>Letland</td><td>Voor</td><td>Overheid steunt het voorstel</td><td>Ja</td></tr>
+                        <tr><td>Litouwen</td><td>Voor</td><td>Overheid steunt het voorstel</td><td>Ja</td></tr>
+                        <tr><td>Luxemburg</td><td>Ongedefinieerd</td><td>Positie onduidelijk, bankgeheim en privacyzorgen</td><td>Ongedefinieerd</td></tr>
+                        <tr><td>Malta</td><td>Voor</td><td>Overheid steunt het voorstel</td><td>Ja</td></tr>
+                        <tr><td>Nederland</td><td>Tegen</td><td>Sterke focus op digitale rechten, kritiek op AI-fouten</td><td>Nee</td></tr>
+                        <tr><td>Polen</td><td>Tegen</td><td>Oppositie tegen massasurveillancemaatregelen</td><td>Nee</td></tr>
+                        <tr><td>Portugal</td><td>Voor</td><td>Overheid steunt het voorstel</td><td>Ja</td></tr>
+                        <tr><td>Roemenië</td><td>Ongedefinieerd</td><td>Positie onduidelijk, privacy- en technische zorgen</td><td>Ongedefinieerd</td></tr>
+                        <tr><td>Slowakije</td><td>Voor</td><td>Overheid steunt het voorstel</td><td>Ja</td></tr>
+                        <tr><td>Slovenië</td><td>Ongedefinieerd</td><td>Positie onduidelijk, constitutionele en privacyzorgen</td><td>Ongedefinieerd</td></tr>
+                        <tr><td>Spanje</td><td>Voor</td><td>Overheid steunt implementatie</td><td>Ja</td></tr>
+                        <tr><td>Zweden</td><td>Voor</td><td>Onder voorbehoud van parlementaire goedkeuring</td><td>Ja</td></tr>
+                    </tbody>
+                </table>
+                <p>Op basis van huidige trends (19/27 landen voor) wordt een meerderheid van 55% (15 stemmen) verwacht op 14 oktober 2025. De totale projectkosten worden geschat op 1,2 miljard euro, gebaseerd op de EU-Commissie’s begrotingsraming van augustus 2025, omvattende AI-ontwikkeling, infrastructuur en compliance-monitoring. De impact op het MKB varieert tussen 50.000 en 100.000 euro per bedrijf, door kosten voor software-aanpassingen, training en juridische naleving, volgens een studie van de Europese Kamer van Koophandel (juli 2025). De kans op mislukking is geschat op 35%, afgeleid van eerdere EU-prestigeprojecten zoals het Galileo-systeem (189% budgetoverschrijding) en de eIDAS-revisie (vertragingen door technische en politieke obstakels), wat wijst op complexe implementatie-uitdagingen en coördinatieproblemen tussen lidstaten.</p>
+            </div>
+            <div class="content-en">
+                <h2 class="section-title">Chance of Implementation</h2>
+                <p>Current status (Aug 16, 2025, 14:32 CEST, 19/27 countries support):</p>
+                <div class="risk-assessment" id="riskAssessment">
+                    <h3>Chance in 2026 (%):</h3>
+                    <div class="risk-chart" onclick="adjustRiskPercentage()">
+                        <div class="risk-fill" id="riskFill"></div>
+                        <div class="risk-percentage" id="riskPercentage">75%</div>
+                    </div>
+                </div>
+                <h3 class="section-title">Country Positions</h3>
+                <table class="country-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Position</th>
+                            <th>Reason</th>
+                            <th>Expected Vote</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Austria</td><td>Against</td><td>Constitutional and privacy concerns</td><td>No</td></tr>
+                        <tr><td>Belgium</td><td>Undecided</td><td>Position unclear, evaluating proposal</td><td>Undecided</td></tr>
+                        <tr><td>Bulgaria</td><td>For</td><td>Government supports the proposal</td><td>Yes</td></tr>
+                        <tr><td>Croatia</td><td>For</td><td>Government supports the proposal</td><td>Yes</td></tr>
+                        <tr><td>Cyprus</td><td>For</td><td>Government supports the proposal</td><td>Yes</td></tr>
+                        <tr><td>Czech Republic</td><td>Undecided</td><td>Position unclear, privacy and implementation concerns</td><td>Undecided</td></tr>
+                        <tr><td>Denmark</td><td>For</td><td>Current Council Presidency, pushing for agreement</td><td>Yes</td></tr>
+                        <tr><td>Estonia</td><td>Undecided</td><td>Position unclear, digital society concerns about surveillance</td><td>Undecided</td></tr>
+                        <tr><td>Finland</td><td>Undecided</td><td>Position unclear, technical concerns remain</td><td>Undecided</td></tr>
+                        <tr><td>France</td><td>For</td><td>Security over privacy, strong police structure</td><td>Yes</td></tr>
+                        <tr><td>Germany</td><td>Undecided</td><td>Position unclear, internal debate ongoing</td><td>Undecided</td></tr>
+                        <tr><td>Greece</td><td>Undecided</td><td>Position unclear, evaluating technical implementation</td><td>Undecided</td></tr>
+                        <tr><td>Hungary</td><td>For</td><td>Government supports surveillance measures</td><td>Yes</td></tr>
+                        <tr><td>Ireland</td><td>For</td><td>Government supports the proposal</td><td>Yes</td></tr>
+                        <tr><td>Italy</td><td>For</td><td>Support for EU cooperation, child safety</td><td>Yes</td></tr>
+                        <tr><td>Latvia</td><td>For</td><td>Government supports the proposal</td><td>Yes</td></tr>
+                        <tr><td>Lithuania</td><td>For</td><td>Government supports the proposal</td><td>Yes</td></tr>
+                        <tr><td>Luxembourg</td><td>Undecided</td><td>Position unclear, banking secrecy and privacy concerns</td><td>Undecided</td></tr>
+                        <tr><td>Malta</td><td>For</td><td>Government supports the proposal</td><td>Yes</td></tr>
+                        <tr><td>Netherlands</td><td>Against</td><td>Strong focus on digital rights, criticism of AI errors</td><td>No</td></tr>
+                        <tr><td>Poland</td><td>Against</td><td>Opposition to mass surveillance measures</td><td>No</td></tr>
+                        <tr><td>Portugal</td><td>For</td><td>Government supports the proposal</td><td>Yes</td></tr>
+                        <tr><td>Romania</td><td>Undecided</td><td>Position unclear, privacy and technical concerns</td><td>Undecided</td></tr>
+                        <tr><td>Slovakia</td><td>For</td><td>Government supports the proposal</td><td>Yes</td></tr>
+                        <tr><td>Slovenia</td><td>Undecided</td><td>Position unclear, constitutional and privacy concerns</td><td>Undecided</td></tr>
+                        <tr><td>Spain</td><td>For</td><td>Government supports implementation</td><td>Yes</td></tr>
+                        <tr><td>Sweden</td><td>For</td><td>Subject to parliamentary approval</td><td>Yes</td></tr>
+                    </tbody>
+                </table>
+                <p>Based on current trends (19/27 countries in favor), a majority of 55% (15 votes) is expected on October 14, 2025. The total project cost is estimated at 1.2 billion euros, based on the EU Commission’s budget forecast from August 2025, covering AI development, infrastructure, and compliance monitoring. The impact on small and medium-sized businesses (MKB) ranges from 50,000 to 100,000 euros per company, due to costs for software adjustments, training, and legal compliance, according to a study by the European Chamber of Commerce (July 2025). The failure chance is estimated at 35%, derived from previous EU prestige projects like the Galileo system (189% budget overrun) and the eIDAS revision (delays due to technical and political obstacles), indicating challenges in implementation complexity and coordination between member states.</p>
+            </div>
+        </section>
+
+        <section class="section" id="agenda">
+            <div class="content-nl">
+                <h2 class="section-title">Agenda</h2>
+                <table class="agenda-section">
+                    <thead>
+                        <tr>
+                            <th>Datum</th>
+                            <th>Evenement</th>
+                            <th>Locatie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>14 okt 2025</td><td>Stemming Raad van de EU</td><td>Brussel</td></tr>
+                        <tr><td>Nov 2025</td><td>Publieke hoorzitting</td><td>Online</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="content-en">
+                <h2 class="section-title">Agenda</h2>
+                <table class="agenda-section">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Oct 14, 2025</td><td>EU Council Vote</td><td>Brussels</td></tr>
+                        <tr><td>Nov 2025</td><td>Public Hearing</td><td>Online</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section" id="news">
+            <div class="content-nl">
+                <h2 class="section-title">Laatste Nieuws</h2>
+                <ul class="news-section">
+                    <li><a href="#">16 aug 2025: 19/27 landen steunen ChatControl 2.0</a></li>
+                    <li><a href="#">1 aug 2025: Proefproject Duitsland meldt 15.000 valse positieven</a></li>
+                </ul>
+            </div>
+            <div class="content-en">
+                <h2 class="section-title">Latest News</h2>
+                <ul class="news-section">
+                    <li><a href="#">Aug 16, 2025: 19/27 countries support ChatControl 2.0</a></li>
+                    <li><a href="#">Aug 1, 2025: German pilot reports 15,000 false positives</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" id="faq">
+            <div class="content-nl">
+                <h2 class="section-title">Veelgestelde Vragen</h2>
+                <div class="faq-item">
+                    <div class="faq-question">Wat doet ChatControl 2.0?</div>
+                    <div class="faq-answer">Het scant privéberichten op CSAM met AI, ongeacht encryptie.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Waarom is er verzet?</div>
+                    <div class="faq-answer">Vanwege privacyrisico's en onbetrouwbare AI-resultaten.</div>
+                </div>
+            </div>
+            <div class="content-en">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question">What does ChatControl 2.0 do?</div>
+                    <div class="faq-answer">It scans private messages for CSAM with AI, regardless of encryption.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Why is there resistance?</div>
+                    <div class="faq-answer">Due to privacy risks and unreliable AI results.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="essays">
+            <div class="content-nl">
+                <h2 class="section-title">Essays</h2>
+                <div class="essay-links">
+                    <div class="essay-link">
+                        <h4>De impact van ChatControl op privacy</h4>
+                        <a href="#">Lees meer</a>
+                    </div>
+                    <div class="essay-link">
+                        <h4>Technische uitdagingen van AI-scanning</h4>
+                        <a href="#">Lees meer</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content-en">
+                <h2 class="section-title">Essays</h2>
+                <div class="essay-links">
+                    <div class="essay-link">
+                        <h4>The Impact of ChatControl on Privacy</h4>
+                        <a href="#">Read more</a>
+                    </div>
+                    <div class="essay-link">
+                        <h4>Technical Challenges of AI Scanning</h4>
+                        <a href="#">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="petition">
+            <div class="content-nl">
+                <h2 class="section-title">Teken de Petitie</h2>
+                <div class="petition-link">
+                    <a href="https://stopchatcontrol.eu" target="_blank">Teken nu!</a>
+                </div>
+            </div>
+            <div class="content-en">
+                <h2 class="section-title">Sign the Petition</h2>
+                <div class="petition-link">
+                    <a href="https://stopchatcontrol.eu" target="_blank">Sign now!</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Privacy Verzet NL. Alle rechten voorbehouden.</p>
+            <div class="footer-call-to-action">
+                Sluit je aan bij de strijd: <a href="#petition">Teken de petitie</a> | <a href="https://x.com/PrivacyVerzetNL">Volg ons op X</a>
+            </div>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.getElementById('language-select').addEventListener('change', function() {
+            document.body.className = 'lang-' + this.value;
+        });
+
+        function adjustRiskPercentage() {
+            let riskFill = document.getElementById('riskFill');
+            let riskPercentage = document.getElementById('riskPercentage');
+            let current = parseInt(riskPercentage.textContent);
+            let newRisk = current === 75 ? 50 : 75;
+            riskFill.style.width = newRisk + '%';
+            riskPercentage.textContent = newRisk + '%';
+        }
+    </script>
+</body>
+</html>
+
