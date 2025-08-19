@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatControl 2.0 - Digital Surveillance Awareness</title>
+    <title>ChatControl 2.0 - Interactive Information Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-dark: #0a0a1a;
-            --primary-darker: #050510;
-            --primary-light: #1a1a3a;
-            --accent-blue: #00eeff;
-            --accent-purple: #bd00ff;
-            --accent-green: #00ff9d;
-            --text-primary: #ffffff;
-            --text-secondary: #cccccc;
-            --transition-speed: 0.4s;
+            --primary: #00ff9d;
+            --secondary: #6a5af9;
+            --accent: #d61c6c;
+            --dark: #0a0a1a;
+            --darker: #050510;
+            --light: #f0f0f5;
+            --text: #ffffff;
+            --text-secondary: #a0a0c0;
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --border-radius: 12px;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-mono: 'Courier New', monospace;
         }
 
         * {
@@ -25,208 +29,234 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--primary-darker);
-            color: var(--text-primary);
+            font-family: var(--font-main);
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAEBAQEBAQECAQECAQEBAQIBAQEBAQIIBgYGBgYIBgkJCQkJCQgKCgwNCgwNCg4ODg4ODhkSERESMhIWFREVFhYSDA4ODgz/2wBDAQEBAQEBAQIBAQIODgYODgwODg4ODAwODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgz/wgARCACAAIADASIAAhEBAxEB/8QAGQABAQEBAQEAAAAAAAAAAAAAAAECAwQF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQD/2gAMAwEAAhADEAAAAO3qL0s6WVLWgAAAAAAAAAAAAF3j7rZs26a1AAAAAAAAAAAAB//EABgQAQADAQAAAAAAAAAAAAAAAAEAESBB/9oACAEBAAEFAoM2V9f/xAAUEQEAAAAAAAAAAAAAAAAAAABA/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAABA/9oACAECAQE/AR//xAAcEAEBAAIDAQEAAAAAAAAAAAAAAREhADFBYZH/2gAIAQEAAT8h/dlH1VfW0fQf/9oADAMBAAEAtQAAAP/EABgQAAMBAQAAAAAAAAAAAAAAAAARITBA/9oACAEBAAE/If/Z');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
         header {
+            background: rgba(10, 10, 26, 0.8);
+            backdrop-filter: blur(10px);
             padding: 20px 0;
-            text-align: center;
-            position: relative;
-            z-index: 10;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 255, 157, 0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        nav {
+            -webkit-text-fill-color: transparent;
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+            align-items: center;
         }
 
-        nav a {
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 600;
-            padding: 10px 15px;
-            border-radius: 30px;
-            transition: all var(--transition-speed);
+            transition: var(--transition);
             position: relative;
-            overflow: hidden;
         }
 
-        nav a:hover {
-            color: var(--text-primary);
-            background: rgba(26, 26, 58, 0.5);
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
-        nav a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            transition: width var(--transition-speed);
+            background: var(--primary);
+            transition: var(--transition);
         }
 
-        nav a:hover::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
+        .language-selector {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 10px 15px;
+            color: var(--text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-selector:hover {
+            background: rgba(106, 90, 249, 0.3);
+            border-color: var(--secondary);
+        }
+
         .hero {
+            padding: 100px 0;
             text-align: center;
-            padding: 100px 20px;
             position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(10,10,26,0.8) 0%, rgba(5,5,16,0.95) 70%);
-            z-index: 1;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(106, 90, 249, 0.1) 0%, transparent 70%);
+            z-index: -1;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        h1 {
-            font-size: 4rem;
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(0, 238, 255, 0.3);
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
         }
 
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
+        .hero p {
+            font-size: 1.4rem;
             max-width: 800px;
             margin: 0 auto 40px;
+            color: var(--text-secondary);
         }
 
         .cta-button {
-            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--darker);
+            border: none;
             padding: 15px 40px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            color: var(--primary-darker);
+            font-size: 1.2rem;
             font-weight: 700;
-            text-decoration: none;
             border-radius: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-            box-shadow: 0 0 20px rgba(189, 0, 255, 0.5);
-            margin: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
 
         .cta-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 238, 255, 0.7);
+            box-shadow: 0 15px 35px rgba(106, 90, 249, 0.4);
         }
 
         .section {
-            padding: 80px 20px;
-            position: relative;
+            padding: 80px 0;
         }
 
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 10, 26, 0.85);
-            z-index: 1;
-        }
-
-        .section-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        h2 {
+        .section-title {
             font-size: 2.5rem;
             margin-bottom: 30px;
             text-align: center;
-            background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            position: relative;
         }
 
-        .content-grid {
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         .card {
-            background: rgba(26, 26, 58, 0.4);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
             padding: 30px;
-            transition: transform var(--transition-speed), background var(--transition-speed);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 238, 255, 0.2);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
         }
 
         .card:hover {
             transform: translateY(-10px);
-            background: rgba(26, 26, 58, 0.7);
-            border: 1px solid var(--accent-blue);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px rgba(0, 255, 157, 0.2);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .card h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--accent-green);
         }
 
         .card p {
             color: var(--text-secondary);
-            margin-bottom: 20px;
         }
 
-        .card-icon {
-            font-size: 2.5rem;
+        .info-section {
+            background: rgba(214, 28, 108, 0.05);
+            border-top: 1px solid rgba(214, 28, 108, 0.2);
+            border-bottom: 1px solid rgba(214, 28, 108, 0.2);
+        }
+
+        .info-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .info-text h2 {
+            font-size: 2rem;
             margin-bottom: 20px;
-            color: var(--accent-purple);
+            color: var(--accent);
+        }
+
+        .info-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
         }
 
         .stats-container {
@@ -236,159 +266,236 @@
             margin-top: 40px;
         }
 
-        .stat-box {
-            text-align: center;
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
             padding: 20px;
-            background: rgba(0, 238, 255, 0.1);
-            border-radius: 10px;
-            border: 1px solid rgba(0, 238, 255, 0.3);
+            text-align: center;
+            border: 1px solid rgba(106, 90, 249, 0.3);
         }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-blue);
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
         }
 
-        .stat-label {
+        .stat-card .label {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
-        .language-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 10px;
+        .interactive-section {
+            text-align: center;
         }
 
-        .lang-btn {
-            padding: 10px 20px;
-            background: rgba(26, 26, 58, 0.7);
-            color: var(--text-primary);
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all var(--transition-speed);
+        .game-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-top: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
         }
 
-        .lang-btn.active {
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            color: var(--primary-darker);
+        .quiz-container, .timeline-container {
+            display: none;
         }
 
-        .encrypt-decrypt {
-            max-width: 800px;
-            margin: 50px auto 0;
-            padding: 30px;
-            background: rgba(26, 26, 58, 0.6);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(189, 0, 255, 0.3);
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
+        .active-game {
             display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question {
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            background: rgba(106, 90, 249, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .option:hover {
+            background: rgba(106, 90, 249, 0.4);
+        }
+
+        .option.correct {
+            background: rgba(0, 255, 157, 0.2);
+            border: 2px solid var(--primary);
+        }
+
+        .option.incorrect {
+            background: rgba(214, 28, 108, 0.2);
+            border: 2px solid var(--accent);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .timeline-event {
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: rgba(106, 90, 249, 0.1);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(106, 90, 249, 0.3);
+            transition: var(--transition);
+        }
+
+        .timeline-event:hover {
+            background: rgba(106, 90, 249, 0.3);
+            transform: scale(1.02);
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 700;
             margin-bottom: 10px;
-            color: var(--accent-green);
+        }
+
+        .timeline-content {
+            text-align: left;
+        }
+
+        .timeline-content h4 {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+        }
+
+        .timeline-line {
+            position: relative;
+            width: 4px;
+            height: 100%;
+            background: var(--secondary);
+            margin: 0 auto 30px;
+        }
+
+        .timeline-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -5px;
+            width: 14px;
+            height: 14px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .game-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .game-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--secondary);
+            color: var(--text);
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
             font-weight: 600;
         }
 
-        .input-group textarea {
-            width: 100%;
-            height: 150px;
-            padding: 15px;
-            background: rgba(5, 5, 16, 0.7);
-            border: 1px solid rgba(0, 238, 255, 0.3);
-            border-radius: 10px;
-            color: var(--text-primary);
-            font-family: monospace;
-            resize: vertical;
+        .game-button:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
         }
 
-        .crypto-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
             margin: 20px 0;
-        }
-
-        .crypto-btn {
-            padding: 12px 25px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            color: var(--primary-darker);
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all var(--transition-speed);
-        }
-
-        .crypto-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(189, 0, 255, 0.7);
-        }
-
-        .visualizer {
-            height: 200px;
-            margin-top: 40px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            position: relative;
             overflow: hidden;
-            border: 1px solid rgba(0, 238, 255, 0.2);
         }
 
-        .visualization-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+        .progress-bar {
             height: 100%;
-            display: grid;
-            grid-template-columns: repeat(20, 1fr);
-            grid-template-rows: repeat(10, 1fr);
-            gap: 2px;
-        }
-
-        .vis-cell {
-            background: rgba(0, 238, 255, 0.1);
-            transition: background var(--transition-speed);
-        }
-
-        .vis-cell.active {
-            background: var(--accent-purple);
-            box-shadow: 0 0 5px var(--accent-purple);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.5s ease;
         }
 
         footer {
-            text-align: center;
-            padding: 40px 20px;
             background: rgba(5, 5, 16, 0.9);
-            border-top: 1px solid rgba(0, 238, 255, 0.2);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 157, 0.2);
         }
 
-        .privacy-icon {
-            font-size: 3rem;
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 20px;
-            color: var(--accent-green);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contributors {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .contributor {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 25px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contributor i {
+            color: var(--primary);
         }
 
         .footer-links {
             display: flex;
-            justify-content: center;
-            gap: 30px;
+            gap: 20px;
             margin-top: 20px;
             flex-wrap: wrap;
         }
@@ -396,354 +503,304 @@
         .footer-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color var(--transition-speed);
+            transition: var(--transition);
         }
 
         .footer-links a:hover {
-            color: var(--accent-blue);
+            color: var(--primary);
         }
 
-        /* German-specific styles */
-        .de {
-            display: none;
-        }
-
-        /* Animation for dramatic background */
-        @keyframes pulse {
-            0% { opacity: 0.3; }
-            50% { opacity: 0.7; }
-            100% { opacity: 0.3; }
-        }
-
-        .hero-content, .section-content {
-            animation: pulse 8s infinite;
-        }
-
-        /* Responsive design */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h1 {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .subtitle {
-                font-size: 1.2rem;
+            .hero p {
+                font-size: 1.1rem;
             }
             
-            nav {
-                gap: 15px;
+            .info-content {
+                grid-template-columns: 1fr;
             }
             
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .game-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
             .hero {
-                padding: 60px 20px;
+                padding: 60px 0;
             }
             
             .section {
-                padding: 50px 20px;
+                padding: 50px 0;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Interactive elements */
-        .interactive-element {
-            position: relative;
+        /* Glowing effect for important elements */
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary);
+            }
+            to {
+                text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--secondary);
+            }
+        }
+
+        /* Cyberpunk-inspired utilities */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .typing-text {
             overflow: hidden;
+            border-right: 2px solid var(--primary);
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink 0.75s infinite;
         }
 
-        .interactive-element::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(189, 0, 255, 0.3) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s;
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
         }
 
-        .interactive-element:hover::before {
-            opacity: 1;
-        }
-
-        .terminal {
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid var(--accent-green);
-            border-radius: 5px;
-            padding: 15px;
-            font-family: monospace;
-            color: var(--accent-green);
-            margin-top: 20px;
-            overflow-x: auto;
-        }
-
-        .terminal-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            color: var(--text-secondary);
-        }
-
-        .terminal-content {
-            min-height: 100px;
-        }
-
-        .terminal-line {
-            margin-bottom: 5px;
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: var(--primary); }
         }
     </style>
 </head>
 <body>
-    <div class="language-switcher">
-        <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
-        <button class="lang-btn" onclick="switchLanguage('de')">DE</button>
-    </div>
-
     <header>
         <div class="container">
-            <div class="logo">
-                <span class="en">ChatControl 2.0</span>
-                <span class="de">ChatControl 2.0</span>
-            </div>
-            <nav>
-                <a href="#" class="en">Overview</a>
-                <a href="#" class="de">Übersicht</a>
-                <a href="#" class="en">Implementation</a>
-                <a href="#" class="de">Implementierung</a>
-                <a href="#" class="en">Analysis</a>
-                <a href="#" class="de">Analyse</a>
-                <a href="#" class="en">Privacy Impact</a>
-                <a href="#" class="de">Datenschutz</a>
-                <a href="#" class="en">Take Action</a>
-                <a href="#" class="de">Handeln</a>
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    ChatControl 2.0
+                </div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#impact">Impact</a>
+                    <a href="#interactive">Interactive Hub</a>
+                    <a href="#resources">Resources</a>
+                </div>
+                <select class="language-selector" id="languageSelector">
+                    <option value="en">EN</option>
+                    <option value="nl">NL</option>
+                    <option value="de">DE</option>
+                </select>
             </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1 class="en">ChatControl 2.0</h1>
-            <h1 class="de">ChatControl 2.0</h1>
-            <p class="subtitle en">Understanding the new EU surveillance regulation and its implications for digital privacy</p>
-            <p class="subtitle de">Verständnis der neuen EU-Überwachungsverordnung und ihrer Auswirkungen auf die digitale Privatsphäre</p>
-            <a href="#analysis" class="cta-button en">Learn More</a>
-            <a href="#analysis" class="cta-button de">Mehr erfahren</a>
+        <div class="container">
+            <h1 class="typing-text">ChatControl 2.0: Your Digital Rights in Peril</h1>
+            <p>A groundbreaking EU law threatening online privacy and free expression. Learn everything you need to know before it's too late.</p>
+            <button class="cta-button glow">Protect Your Privacy</button>
         </div>
     </section>
 
-    <section class="section" id="overview">
-        <div class="container section-content">
-            <h2 class="en">What is ChatControl 2.0?</h2>
-            <h2 class="de">Was ist ChatControl 2.0?</h2>
-            <div class="content-grid">
-                <div class="card interactive-element">
-                    <div class="card-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="en">Regulation Overview</h3>
-                    <h3 class="de">Verordnungsübersicht</h3>
-                    <p class="en">ChatControl 2.0 is a proposed EU regulation that would mandate scanning of private communications to detect potential child sexual abuse material (CSAM). Unlike its predecessor, this version extends beyond traditional file-sharing networks to include encrypted messaging services.</p>
-                    <p class="de">ChatControl 2.0 ist eine vorgeschlagene EU-Verordnung, die das Scannen privater Kommunikation zur Erkennung potenzieller Materialien zum sexuellen Kindesmissbrauch (CSAM) vorschreibt. Im Gegensatz zur Vorgängerversion erweitert diese Version über traditionelle Filesharing-Netzwerke hinaus auf verschlüsselte Messaging-Dienste.</p>
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">What is ChatControl 2.0?</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Privacy Invasion</h3>
+                    <p>ChatControl 2.0 permits mass scanning of private communications without suspicion, directly violating fundamental privacy rights guaranteed under EU law.</p>
                 </div>
-                <div class="card interactive-element">
-                    <div class="card-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3 class="en">Encryption Impact</h3>
-                    <h3 class="de">Verschlüsselungsauswirkung</h3>
-                    <p class="en">The regulation directly challenges end-to-end encryption by requiring service providers to implement client-side scanning. This undermines the very foundation of secure communications that protect journalists, activists, and ordinary citizens.</p>
-                    <p class="de">Die Verordnung stellt eine direkte Herausforderung für die Ende-zu-Ende-Verschlüsselung dar, da Dienstanbieter zum clientseitigen Scanning verpflichtet werden. Dies untergräbt das Fundament sicherer Kommunikation, das Journalisten, Aktivisten und gewöhnliche Bürger schützt.</p>
+                <div class="card">
+                    <i class="fas fa-search"></i>
+                    <h3>Mass Surveillance</h3>
+                    <p>It mandates Internet Service Providers to scan all private communications for "illegal content" based on pattern matching algorithms.</p>
                 </div>
-                <div class="card interactive-element">
-                    <div class="card-icon">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                    <h3 class="en">Legal Framework</h3>
-                    <h3 class="de">Rechtsrahmen</h3>
-                    <p class="en">While aiming to combat child abuse, ChatControl 2.0 introduces mass surveillance measures that conflict with fundamental rights to privacy and data protection as enshrined in the EU Charter of Fundamental Rights.</p>
-                    <p class="de">ChatControl 2.0 zielt darauf ab, Kindesmissbrauch zu bekämpfen, führt jedoch massenhafte Überwachungsmaßnahmen ein, die im Widerspruch zu den grundlegenden Rechten auf Privatsphäre und Datenschutz stehen, wie sie in der EU-Grundrechtecharta verankert sind.</p>
+                <div class="card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Legal Concerns</h3>
+                    <p>Experts from UN, Council of Europe, and EU institutions have raised serious constitutional and legal concerns about this legislation.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div class="container section-content">
-            <h2 class="en">Implementation Requirements</h2>
-            <h2 class="de">Implementierungsanforderungen</h2>
-            <div class="content-grid">
-                <div class="card interactive-element">
-                    <div class="card-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3 class="en">Scanning Technology</h3>
-                    <h3 class="de">Scantechnologie</h3>
-                    <p class="en">The regulation requires implementation of client-side scanning technologies, similar to those used by Apple's proposed CSAM detection system. These systems use cryptographic hash matching to identify known illegal content.</p>
-                    <p class="de">Die Verordnung erfordert die Implementierung clientseitiger Scan-Technologien, ähnlich denen des vorgeschlagenen CSAM-Erkennungssystems von Apple. Diese Systeme verwenden die kryptografische Hash-Übereinstimmung zur Identifizierung bekannter illegaler Inhalte.</p>
+    <section class="section info-section" id="impact">
+        <div class="container">
+            <div class="info-content">
+                <div class="info-text">
+                    <h2>Global Impact</h2>
+                    <p>ChatControl 2.0 represents one of the most significant privacy legislation threats since its introduction in 2021. If implemented, it would:</p>
+                    <ul>
+                        <li>Force tech companies to implement mass scanning of all private communications</li>
+                        <li>Enable automated AI scanning of millions of conversations daily</li>
+                        <li>Create backdoors in end-to-end encrypted messaging services</li>
+                        <li>Potentially affect billions of users across the EU and globally</li>
+                    </ul>
+                    <p class="glow">This law directly conflicts with Article 7 and 8 of the EU Charter of Fundamental Rights, which protect privacy and data protection.</p>
                 </div>
-                <div class="card interactive-element">
-                    <div class="card-icon">
-                        <i class="fas fa-server"></i>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="number">40+</div>
+                        <div class="label">European Organizations Opposed</div>
                     </div>
-                    <h3 class="en">Provider Obligations</h3>
-                    <h3 class="de">Anbieterverpflichtungen</h3>
-                    <p class="en">Service providers must implement scanning mechanisms without user consent, report suspicious content to authorities, and potentially enable automated reporting with minimal human oversight.</p>
-                    <p class="de">Dienstanbieter müssen Scan-Mechanismen ohne Zustimmung der Nutzer implementieren, verdächtige Inhalte an Behörden melden und möglicherweise automatisierte Meldungen mit minimalem menschlichen Eingreifen ermöglichen.</p>
-                </div>
-                <div class="card interactive-element">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
+                    <div class="stat-card">
+                        <div class="number">100M+</div>
+                        <div class="label">Users Potentially Affected</div>
                     </div>
-                    <h3 class="en">Scope Expansion</h3>
-                    <h3 class="de">Umfangserweiterung</h3>
-                    <p class="en">The regulation extends surveillance to all forms of electronic communication, including private messaging services, email platforms, and cloud storage - potentially affecting billions of users.</p>
-                    <p class="de">Die Verordnung erweitert die Überwachung auf alle Formen der elektronischen Kommunikation, einschließlich privater Messaging-Dienste, E-Mail-Plattformen und Cloud-Speicher - was potenziell Milliarden von Nutzern betrifft.</p>
+                    <div class="stat-card">
+                        <div class="number">87%</div>
+                        <div class="label">MEPs Vote Against</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">500+</div>
+                        <div class="label">Security Experts Signed Protest</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="analysis">
-        <div class="container section-content">
-            <h2 class="en">Technical Analysis</h2>
-            <h2 class="de">Technische Analyse</h2>
-            <div class="stats-container">
-                <div class="stat-box interactive-element">
-                    <div class="stat-number">95%</div>
-                    <div class="stat-label en">Encryption Undermined</div>
-                    <div class="stat-label de">Verschlüsselung untergraben</div>
-                </div>
-                <div class="stat-box interactive-element">
-                    <div class="stat-number">10B+</div>
-                    <div class="stat-label en">Potential Users Affected</div>
-                    <div class="stat-label de">Potenziell betroffene Nutzer</div>
-                </div>
-                <div class="stat-box interactive-element">
-                    <div class="stat-number">87%</div>
-                    <div class="stat-label en">False Positives Risk</div>
-                    <div class="stat-label de">Falsch-Positiv-Risiko</div>
-                </div>
-                <div class="stat-box interactive-element">
-                    <div class="stat-number">121+</div>
-                    <div class="stat-label en">Countries Impacted</div>
-                    <div class="stat-label de">Betroffene Länder</div>
-                </div>
+    <section class="section interactive-section" id="interactive">
+        <div class="container">
+            <h2 class="section-title">Interactive Learning</h2>
+            <div class="game-buttons">
+                <button class="game-button" id="quizBtn">Privacy Quiz</button>
+                <button class="game-button" id="timelineBtn">Legislative Timeline</button>
+                <button class="game-button" id="factsBtn">Key Facts</button>
             </div>
-            
-            <div class="encrypt-decrypt">
-                <h3 class="en">Encryption Demonstration</h3>
-                <h3 class="de">Verschlüsselungs-Demonstration</h3>
-                <div class="input-group">
-                    <label class="en">Your Message (Plain Text)</label>
-                    <label class="de">Ihre Nachricht (Klartext)</label>
-                    <textarea id="plaintext" class="en">This is a secure private message that should remain confidential</textarea>
-                    <textarea id="plaintext-de" class="de" style="display:none;">Dies ist eine sichere private Nachricht, die vertraulich bleiben sollte</textarea>
-                </div>
-                
-                <div class="crypto-buttons">
-                    <button class="crypto-btn en" onclick="encryptMessage()">Encrypt Message</button>
-                    <button class="crypto-btn de" onclick="encryptMessage()" style="display:none;">Nachricht verschlüsseln</button>
-                    <button class="crypto-btn en" onclick="decryptMessage()">Decrypt Message</button>
-                    <button class="crypto-btn de" onclick="decryptMessage()" style="display:none;">Nachricht entschlüsseln</button>
-                </div>
-                
-                <div class="input-group">
-                    <label class="en">Encrypted Output</label>
-                    <label class="de">Verschlüsselte Ausgabe</label>
-                    <textarea id="encrypted" readonly></textarea>
-                </div>
-                
-                <div class="terminal">
-                    <div class="terminal-header">
-                        <span>Encryption Terminal</span>
-                        <span>:: ChatControl 2.0 Analysis</span>
-                    </div>
-                    <div class="terminal-content" id="terminal-output">
-                        <div class="terminal-line">$ chatcontrol-scan --status</div>
-                        <div class="terminal-line">> Scanning protocols active</div>
-                        <div class="terminal-line">> E2E encryption status: <span style="color: #ff5555;">COMPROMISED</span></div>
-                        <div class="terminal-line">> Privacy protections: <span style="color: #ff5555;">DISABLED</span></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="visualizer interactive-element">
-                <div class="visualization-grid" id="crypto-visualizer"></div>
-            </div>
-        </div>
-    </section>
 
-    <section class="section">
-        <div class="container section-content">
-            <h2 class="en">Privacy Impact</h2>
-            <h2 class="de">Datenschutz-Auswirkungen</h2>
-            <div class="content-grid">
-                <div class="card interactive-element">
-                    <div class="privacy-icon">
-                        <i class="fas fa-user-secret"></i>
+            <div class="game-container">
+                <div class="quiz-container" id="quizContainer">
+                    <h3>Test Your Privacy Knowledge</h3>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar"></div>
                     </div>
-                    <h3 class="en">Journalist Protection</h3>
-                    <h3 class="de">Journalistenschutz</h3>
-                    <p class="en">End-to-end encryption is essential for journalists communicating with sources. ChatControl 2.0 undermines whistleblower protection and could expose sensitive investigative communications.</p>
-                    <p class="de">Ende-zu-Ende-Verschlüsselung ist entscheidend für Journalisten bei der Kommunikation mit Quellen. ChatControl 2.0 untergräbt den Whistleblower-Schutz und könnte sensible investigativjournalistische Kommunikationen offenlegen.</p>
+                    <div class="question" id="question"></div>
+                    <div class="options" id="options"></div>
+                    <button class="cta-button" id="nextBtn">Next Question</button>
                 </div>
-                <div class="card interactive-element">
-                    <div class="privacy-icon">
-                        <i class="fas fa-heartbeat"></i>
+
+                <div class="timeline-container" id="timelineContainer">
+                    <h3>ChatControl 2.0 Legislative Timeline</h3>
+                    <div class="timeline-line"></div>
+                    <div class="timeline">
+                        <div class="timeline-event">
+                            <div class="timeline-date">May 2021</div>
+                            <div class="timeline-content">
+                                <h4>Initial Proposal</h4>
+                                <p>European Commission introduces ChatControl as part of the EU Child Protection strategy to scan private communications for CSAM.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-date">2023</div>
+                            <div class="timeline-content">
+                                <h4>Expanded Scope</h4>
+                                <p>Proposal expanded to cover "terrorism" and "child exploitation materials" beyond CSAM, significantly widening surveillance scope.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-date">June 2023</div>
+                            <div class="timeline-content">
+                                <h4>Vote in EU Parliament</h4>
+                                <p>EU Parliament votes to approve ChatControl 2.0 with 376 votes for and 245 against, despite significant opposition.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-event">
+                            <div class="timeline-date">Ongoing</div>
+                            <div class="timeline-content">
+                                <h4>Council Negotiations</h4>
+                                <p>EU Council negotiating final terms of implementation. Implementation expected in 2024-2025 with potential appeals to EU Court.</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="en">Health Data Security</h3>
-                    <h3 class="de">Gesundheitsdatensicherheit</h3>
-                    <p class="en">Medical professionals rely on encrypted communication to protect patient confidentiality. This regulation threatens the privacy of healthcare communications and sensitive patient data.</p>
-                    <p class="de">Medizinische Fachkräfte verlassen sich auf verschlüsselte Kommunikation, um die Vertraulichkeit von Patienten zu schützen. Diese Verordnung bedroht die Privatsphäre der Gesundheitskommunikation und sensible Patientendaten.</p>
                 </div>
-                <div class="card interactive-element">
-                    <div class="privacy-icon">
-                        <i class="fas fa-balance-scale"></i>
+
+                <div class="facts-container" id="factsContainer">
+                    <h3>Disturbing Facts About ChatControl 2.0</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>No Prior Suspicion</h3>
+                            <p>All users would be treated as suspects. Anyone who sends two files with the same name would be flagged as potential "groomer".</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-globe"></i>
+                            <h3>Global Backdoor</h3>
+                            <p>Any tech company serving EU users would need to implement the scanning technology, creating a global privacy erosion pattern.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-lock-open"></i>
+                            <h3>Encryption Destruction</h3>
+                            <p>The law demands end-to-end encryption services to create backdoors, fundamentally breaking the security model we all rely on.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-balance-scale"></i>
+                            <h3>Legal Contradictions</h3>
+                            <p>Directly contradicts the EU Charter of Fundamental Rights requiring governments to protect and not surveil private communications.</p>
+                        </div>
                     </div>
-                    <h3 class="en">Legal Confidentiality</h3>
-                    <h3 class="de">Rechtliche Vertraulichkeit</h3>
-                    <p class="en">Lawyers require secure communication channels to maintain attorney-client privilege. Implementation of ChatControl 2.0 could compromise legal confidentiality and attorney-client relationships.</p>
-                    <p class="de">Rechtsanwälte benötigen sichere Kommunikationskanäle, um das Anwalt-Mandanten-Privileg zu wahren. Die Implementierung von ChatControl 2.0 könnte die rechtliche Vertraulichkeit und Anwalt-Mandanten-Beziehungen gefährden.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div class="container section-content">
-            <h2 class="en">Take Action Now</h2>
-            <h2 class="de">Handeln Sie jetzt</h2>
-            <div class="content-grid">
-                <div class="card interactive-element">
-                    <div class="card-icon">
-                        <i class="fas fa-vote-yea"></i>
-                    </div>
-                    <h3 class="en">Contact Your MEP</h3>
-                    <h3 class="de">Kontaktieren Sie Ihren MEA</h3>
-                    <p class="en">Reach out to your Members of the European Parliament to express your concerns about ChatControl 2.0. Your voice can influence the legislative process.</p>
-                    <p class="de">Wenden Sie sich an Ihre Mitglieder des Europäischen Parlaments, um Ihre Bedenken bezüglich ChatControl 2.0 zu äußern. Ihre Stimme kann den legislativen Prozess beeinflussen.</p>
-                    <a href="#" class="cta-button en">Find MEP Contact</a>
-                    <a href="#" class="cta-button de" style="display:none;">MEA Kontakt finden</a>
+    <section class="section" id="resources">
+        <div class="container">
+            <h2 class="section-title">Take Action</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <i class="fas fa-book"></i>
+                    <h3>Read More</h3>
+                    <p>Detailed legal analysis and research papers on the implications of ChatControl 2.0 regulation.</p>
+                    <button class="cta-button" style="margin-top: 15px;">Documentation</button>
                 </div>
-                <div class="card interactive-element">
-                    <div class="card-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3 class="en">Support Digital Rights</h3>
-                    <h3 class="de">Unterstützen Sie digitale Rechte</h3>
-                    <p class="en">Donate to organizations protecting digital privacy and encryption. Your contribution supports the fight for digital freedoms.</p>
-                    <p class="de">Spenden Sie an Organisationen, die digitale Privatsphäre und Verschlüsselung schützen. Ihr Beitrag unterstützt den Kampf für digitale Freiheiten.</p>
-                    <a href="#" class="cta-button en">Donate Now</a>
-                    <a href="#" class="cta-button de" style="display:none;">Jetzt spenden</a>
+                <div class="card">
+                    <i class="fas fa-vote-yea"></i>
+                    <h3>Support the Protest</h3>
+                    <p>Join organizations and experts in advocating against privacy-invasive legislation.</p>
+                    <button class="cta-button" style="margin-top: 15px;">Sign Petitions</button>
                 </div>
-                <div class="card interactive-element">
-                    <div class="card-icon">
-                        <i class="fas fa-share-alt"></i>
-                    </div>
-                    <h3 class="en">Spread Awareness</h3>
-                    <h3 class="de">Verbreiten Sie Aufklärung</h3>
-                    <p class="en">Share this information with your network and on social media platforms to build awareness about the dangers of ChatControl 2.0.</p>
-                    <p class="de">Teilen Sie diese Informationen in Ihrem Netzwerk und auf Social-Media-Plattformen, um Aufklärung über die Gefahren von ChatControl 2.0 zu verbreiten.</p>
-                    <a href="#" class="cta-button en">Share Information</a>
-                    <a href="#" class="cta-button de" style="display:none;">Information teilen</a>
+                <div class="card">
+                    <i class="fas fa-shield-virus"></i>
+                    <h3>Secure Your Communication</h3>
+                    <p>Learn about tools and methods to protect your digital privacy and secure communications.</p>
+                    <button class="cta-button" style="margin-top: 15px;">Security Guide</button>
                 </div>
             </div>
         </div>
@@ -751,128 +808,483 @@
 
     <footer>
         <div class="container">
-            <div class="privacy-icon">
-                <i class="fas fa-user-shield"></i>
-            </div>
-            <p class="en">Protect Your Digital Rights | Fight for Encryption</p>
-            <p class="de">Schützen Sie Ihre digitalen Rechte | Kämpfen Sie für Verschlüsselung</p>
-            <div class="footer-links">
-                <a href="#" class="en">Privacy Policy</a>
-                <a href="#" class="de">Datenschutzrichtlinie</a>
-                <a href="#" class="en">Contact Us</a>
-                <a href="#" class="de">Kontaktieren Sie uns</a>
-                <a href="#" class="en">Resources</a>
-                <a href="#" class="de">Ressourcen</a>
-                <a href="#" class="en">FAQ</a>
-                <a href="#" class="de">FAQ</a>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i>
+                    ChatControl 2.0 Awareness
+                </div>
+                <div class="contributors">
+                    <div class="contributor">
+                        <i class="fas fa-heart"></i>
+                        <span>Special thanks to WimLee115</span>
+                    </div>
+                    <div class="contributor">
+                        <i class="fas fa-users"></i>
+                        <span>PrivacyVerzetNL</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">Legal Resources</a>
+                </div>
+                <p style="margin-top: 30px; color: var(--text-secondary);">
+                    This website is dedicated to preserving digital rights and preventing mass surveillance.
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Language switching functionality
-        function switchLanguage(lang) {
-            document.querySelectorAll('.en, .de').forEach(el => {
-                el.style.display = 'none';
-            });
-            
-            document.querySelectorAll('.' + lang).forEach(el => {
-                el.style.display = 'block';
-            });
-            
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            document.querySelector('.lang-btn.' + lang).classList.add('active');
-        }
-
-        // Initialize visualization grid
-        function initVisualization() {
-            const grid = document.getElementById('crypto-visualizer');
-            for (let i = 0; i < 200; i++) {
-                const cell = document.createElement('div');
-                cell.className = 'vis-cell';
-                cell.addEventListener('mouseover', () => {
-                    cell.classList.add('active');
-                    setTimeout(() => cell.classList.remove('active'), 1000);
-                });
-                grid.appendChild(cell);
+        // Language data
+        const translations = {
+            en: {
+                whatIs: "What is ChatControl 2.0?",
+                privacyInvasion: "Privacy Invasion",
+                massSurveillance: "Mass Surveillance",
+                legalConcerns: "Legal Concerns",
+                privacyInvasionDesc: "ChatControl 2.0 permits mass scanning of private communications without suspicion, directly violating fundamental privacy rights guaranteed under EU law.",
+                massSurveillanceDesc: "It mandates Internet Service Providers to scan all private communications for 'illegal content' based on pattern matching algorithms.",
+                legalConcernsDesc: "Experts from UN, Council of Europe, and EU institutions have raised serious constitutional and legal concerns about this legislation.",
+                globalImpact: "Global Impact",
+                impactDesc: "ChatControl 2.0 represents one of the most significant privacy legislation threats since its introduction in 2021. If implemented, it would:",
+                impactList1: "Force tech companies to implement mass scanning of all private communications",
+                impactList2: "Enable automated AI scanning of millions of conversations daily",
+                impactList3: "Create backdoors in end-to-end encrypted messaging services",
+                impactList4: "Potentially affect billions of users across the EU and globally",
+                legalConflict: "This law directly conflicts with Article 7 and 8 of the EU Charter of Fundamental Rights, which protect privacy and data protection.",
+                interactiveLearning: "Interactive Learning",
+                privacyQuiz: "Privacy Quiz",
+                legislativeTimeline: "Legislative Timeline",
+                keyFacts: "Key Facts",
+                disturbingFacts: "Disturbing Facts About ChatControl 2.0",
+                noSuspicion: "No Prior Suspicion",
+                globalBackdoor: "Global Backdoor",
+                encryptionDestruction: "Encryption Destruction",
+                legalContradictions: "Legal Contradictions",
+                noSuspicionDesc: "All users would be treated as suspects. Anyone who sends two files with the same name would be flagged as potential 'groomer'.",
+                globalBackdoorDesc: "Any tech company serving EU users would need to implement the scanning technology, creating a global privacy erosion pattern.",
+                encryptionDestructionDesc: "The law demands end-to-end encryption services to create backdoors, fundamentally breaking the security model we all rely on.",
+                legalContradictionsDesc: "Directly contradicts the EU Charter of Fundamental Rights requiring governments to protect and not surveil private communications.",
+                takeAction: "Take Action",
+                readMore: "Read More",
+                supportProtest: "Support the Protest",
+                secureCommunication: "Secure Your Communication",
+                footerText: "This website is dedicated to preserving digital rights and preventing mass surveillance."
+            },
+            nl: {
+                whatIs: "Wat is ChatControl 2.0?",
+                privacyInvasion: "Privacy Overtreding",
+                massSurveillance: "Massasurveillance",
+                legalConcerns: "Juridische Bezwaren",
+                privacyInvasionDesc: "ChatControl 2.0 staat massale scannen van privécommunicatie toe zonder verdenking, wat direct fundamentele privacyrechten schendt die onder EU-wetgeving zijn gegarandeerd.",
+                massSurveillanceDesc: "Het verplicht internetproviders om alle privécommunicatie te scannen op 'illegale inhoud' gebaseerd op patroonherkenning algoritmen.",
+                legalConcernsDesc: "Deskundigen van de VN, de Europese Raad en EU-instellingen hebben ernstige grondwettelijke en juridische bezwaren tegen deze wetgeving ingediend.",
+                globalImpact: "Wereldwijde Impact",
+                impactDesc: "ChatControl 2.0 is een van de belangrijkste bedreigingen voor privacywetgeving sinds de introductie in 2021. Indien geïmplementeerd zou het:",
+                impactList1: "Techbedrijven verplichten om alle privécommunicatie massaal te scannen",
+                impactList2: "Automatische AI-scan van miljoenen gesprekken per dag mogelijk maken",
+                impactList3: "Backdoors creëren in end-to-end versleutelde berichtendiensten",
+                impactList4: "Potentieel miljarden gebruikers in de EU en wereldwijd beïnvloeden",
+                legalConflict: "Deze wet is in direct conflict met Artikel 7 en 8 van het Europees Handvest voor Fundamentele Rechten, die privacy en gegevensbescherming waarborgen.",
+                interactiveLearning: "Interactieve Leerervaring",
+                privacyQuiz: "Privacy Quiz",
+                legislativeTimeline: "Wetgevings Tijdlijn",
+                keyFacts: "Belangrijke Feiten",
+                disturbingFacts: "Verontrustende Feiten Over ChatControl 2.0",
+                noSuspicion: "Geen Verdenking Vereist",
+                globalBackdoor: "Wereldwijde Backdoor",
+                encryptionDestruction: "Versleuteling Vernietiging",
+                legalContradictions: "Juridische Contradicties",
+                noSuspicionDesc: "Alle gebruikers zouden als verdachten worden behandeld. Iedereen die twee bestanden met dezelfde naam verzendt zou als mogelijke 'groomer' worden gemarkeerd.",
+                globalBackdoorDesc: "Elk techbedrijf dat EU-gebruikers bedient zou de scantechnologie moeten implementeren, wat wereldwijde privacy-erosie creëert.",
+                encryptionDestructionDesc: "De wet eist dat end-to-end versleutelde diensten backdoors aanmaken, wat fundamentaal het beveiligingsmodel breekt waar we allemaal op vertrouwen.",
+                legalContradictionsDesc: "In direct conflict met het Europees Handvest voor Fundamentele Rechten dat regeringen verplicht om privécommunicatie te beschermen, niet te surveilleren.",
+                takeAction: "Neem Actie",
+                readMore: "Lees Meer",
+                supportProtest: "Steun het Protest",
+                secureCommunication: "Beveilig je Communicatie",
+                footerText: "Deze website is gewijd aan het beschermen van digitale rechten en het voorkomen van massasurveillance."
+            },
+            de: {
+                whatIs: "Was ist ChatControl 2.0?",
+                privacyInvasion: "Privatsphären-Verletzung",
+                massSurveillance: "Massenüberwachung",
+                legalConcerns: "Rechtliche Bedenken",
+                privacyInvasionDesc: "ChatControl 2.0 erlaubt die Massenüberwachung privater Kommunikation ohne Verdacht, wodurch fundamentale Privatsphärenrechte unter EU-Recht verletzt werden.",
+                massSurveillanceDesc: "Es verpflichtet Internetdienstanbieter, alle privaten Kommunikationen auf 'illegale Inhalte' durch mustererkennende Algorithmen zu scannen.",
+                legalConcernsDesc: "Experten von UNO, Europarat und EU-Institutionen haben schwerwiegende verfassungsrechtliche und juristische Bedenken gegen diese Gesetzgebung erhoben.",
+                globalImpact: "Globale Auswirkungen",
+                impactDesc: "ChatControl 2.0 repräsentiert eine der größten Bedrohungen für die Privatsphäre seit seiner Einführung 2021. Wenn es umgesetzt wird, würde es:",
+                impactList1: "Technologiekonzerne zwingen, alle privaten Kommunikationen massenhaft zu überwachen",
+                impactList2: "Automatisierte KI-Überwachung von Millionen von Konversationen täglich ermöglichen",
+                impactList3: "Hintertüren in vollständig verschlüsselten Nachrichtendiensten schaffen",
+                impactList4: "Potenziell Milliarden von Nutzern in der EU und weltweit betreffen",
+                legalConflict: "Dieses Gesetz steht im direkten Widerspruch zu Artikel 7 und 8 der Charta der Grundrechte der EU, die Privatsphäre und Datenschutz garantieren.",
+                interactiveLearning: "Interaktives Lernen",
+                privacyQuiz: "Privatsphären-Quiz",
+                legislativeTimeline: "Gesetzgebung Zeitstrahl",
+                keyFacts: "Wichtige Fakten",
+                disturbingFacts: "Beunruhigende Fakten über ChatControl 2.0",
+                noSuspicion: "Kein Verdacht Notwendig",
+                globalBackdoor: "Globale Hintertür",
+                encryptionDestruction: "Verschlüsselungs-Zerstörung",
+                legalContradictions: "Rechtliche Widersprüche",
+                noSuspicionDesc: "Alle Nutzer würden als Verdächtige behandelt werden. Jeder, der zwei Dateien mit gleichem Namen sendet, wird als potenzieller 'Groomer' markiert.",
+                globalBackdoorDesc: "Jedes Technologieunternehmen, das EU-Nutzer bedient, müsste die Scan-Technologie implementieren und schafft so ein globales Privatsphären-Zerfalls-Muster.",
+                encryptionDestructionDesc: "Das Gesetz verlangt von Ende-zu-Ende verschlüsselten Diensten, Hintertüren zu schaffen, was das Sicherheitsmodell fundamentiert bricht.",
+                legalContradictionsDesc: "Direkter Widerspruch zur Charta der Grundrechte der EU, die Regierungen verpflichtet, private Kommunikation zu schützen, nicht zu überwachen.",
+                takeAction: "Handeln Sie",
+                readMore: "Mehr Lesen",
+                supportProtest: "Unterstützen Sie den Protest",
+                secureCommunication: "Sichern Sie Ihre Kommunikation",
+                footerText: "Diese Website widmet sich dem Erhalt digitaler Rechte und der Verhinderung von Massenüberwachung."
             }
-        }
+        };
 
-        // Encryption/Decryption simulation
-        function encryptMessage() {
-            const lang = document.querySelector('.lang-btn.active').textContent.toLowerCase();
-            const input = lang === 'en' ? document.getElementById('plaintext').value : document.getElementById('plaintext-de').value;
-            const encrypted = btoa(input);
-            document.getElementById('encrypted').value = encrypted;
-            
-            // Update terminal
-            const terminal = document.getElementById('terminal-output');
-            terminal.innerHTML += `
-                <div class="terminal-line">$ chatcontrol-scan --encrypt</div>
-                <div class="terminal-line">> Message encrypted with compromised protocol</div>
-                <div class="terminal-line">> Scan matches found: <span style="color: #ff5555;">DETECTED</span></div>
-                <div class="terminal-line">> Reporting to authorities: <span style="color: #ff5555;">ENABLED</span></div>
-            `;
-        }
-
-        function decryptMessage() {
-            const encrypted = document.getElementById('encrypted').value;
-            if (encrypted) {
-                try {
-                    const decrypted = atob(encrypted);
-                    const lang = document.querySelector('.lang-btn.active').textContent.toLowerCase();
-                    if (lang === 'en') {
-                        document.getElementById('plaintext').value = decrypted;
-                    } else {
-                        document.getElementById('plaintext-de').value = decrypted;
-                    }
-                } catch (e) {
-                    alert('Invalid encrypted string');
+        // Interactive Game Data
+        const quizData = {
+            en: [
+                {
+                    question: "What does ChatControl 2.0 primarily aim to do?",
+                    options: [
+                        "Enhance communication security",
+                        "Mass monitor private communications",
+                        "Improve children's education",
+                        "Regulate social media platforms"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Which fundamental rights does ChatControl 2.0 threaten?",
+                    options: [
+                        "Right to free assembly",
+                        "Right to privacy and protection of personal data",
+                        "Right to vote",
+                        "Right to employment"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What would happen to end-to-end encrypted services?",
+                    options: [
+                        "They would become stronger",
+                        "They would remain unchanged",
+                        "They would be required to implement backdoors",
+                        "They would be banned completely"
+                    ],
+                    correct: 2
                 }
-            }
-            
-            // Update terminal
-            const terminal = document.getElementById('terminal-output');
-            terminal.innerHTML += `
-                <div class="terminal-line">$ chatcontrol-scan --decrypt</div>
-                <div class="terminal-line">> Attempting to decrypt private communication</div>
-                <div class="terminal-line">> Access granted to surveillance authorities</div>
-            `;
-        }
+            ],
+            nl: [
+                {
+                    question: "Wat is het primaire doel van ChatControl 2.0?",
+                    options: [
+                        "Verbeteren van communicatiebeveiliging",
+                        "Massale monitoring van privécommunicatie",
+                        "Verbeteren van de educatie voor kinderen",
+                        "Reguleren van sociale media platforms"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Welke fundamentele rechten bedreigt ChatControl 2.0?",
+                    options: [
+                        "Recht op vrije vergadering",
+                        "Recht op privacy en bescherming van persoonsgegevens",
+                        "Stemrecht",
+                        "Recht op werk"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Wat zou er gebeuren met end-to-end versleutelde diensten?",
+                    options: [
+                        "Ze zouden sterker worden",
+                        "Ze zouden onveranderd blijven",
+                        "Ze zouden verplicht worden backdoors te implementeren",
+                        "Ze zouden volledig verboden worden"
+                    ],
+                    correct: 2
+                }
+            ],
+            de: [
+                {
+                    question: "Was ist das primäre Ziel von ChatControl 2.0?",
+                    options: [
+                        "Verbesserung der Kommunikationssicherheit",
+                        "Massive Überwachung der Privatkommunikation",
+                        "Verbesserung der Kinderbildung",
+                        "Regulierung von Social Media Plattformen"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Welche Grundrechte bedroht ChatControl 2.0?",
+                    options: [
+                        "Recht auf freie Versammlung",
+                        "Recht auf Privatsphäre und Schutz persönlicher Daten",
+                        "Wahlrecht",
+                        "Recht auf Beschäftigung"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Was würde mit Ende-zu-Ende verschlüsselten Diensten passieren?",
+                    options: [
+                        "Sie würden stärker werden",
+                        "Sie würden unverändert bleiben",
+                        "Sie müssten Hintertüren implementieren",
+                        "Sie würden komplett verboten werden"
+                    ],
+                    correct: 2
+                }
+            ]
+        };
 
-        // Add interactive effects to cards
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--x', x + 'px');
-                card.style.setProperty('--y', y + 'px');
-            });
+        // Timeline data
+        const timelineData = {
+            en: [
+                { date: "May 2021", title: "Initial Proposal", content: "European Commission introduces ChatControl as part of the EU Child Protection strategy to scan private communications for CSAM." },
+                { date: "2023", title: "Expanded Scope", content: "Proposal expanded to cover 'terrorism' and 'child exploitation materials' beyond CSAM, significantly widening surveillance scope." },
+                { date: "June 2023", title: "Vote in EU Parliament", content: "EU Parliament votes to approve ChatControl 2.0 with 376 votes for and 245 against, despite significant opposition." },
+                { date: "Ongoing", title: "Council Negotiations", content: "EU Council negotiating final terms of implementation. Implementation expected in 2024-2025 with potential appeals to EU Court." }
+            ],
+            nl: [
+                { date: "Mei 2021", title: "Initiële voorstelling", content: "De Europese Commissie introduceert ChatControl als onderdeel van de EU-strategie voor kinderbescherming om privécommunicatie te scannen op CSAM." },
+                { date: "2023", title: "Uitgebreide scope", content: "Voorstel uitgebreid tot 'terrorisme' en 'materiaal dat kinderen uitbuit' boven CSAM, wat het toezicht aanzienlijk breder maakt." },
+                { date: "Juni 2023", title: "Stemming in EU-Parlement", content: "EU-Parlement stemt voor goedkeuring van ChatControl 2.0 met 376 stemmen voor en 245 tegen, ondanks aanzienlijke oppositie." },
+                { date: "Lopende", title: "Raadsvergaderingen", content: "EU-Raad onderhandelt over de uiteindelijke implementatiesvoorwaarden. Implementatie verwacht in 2024-2025 met mogelijk beroep bij EU-Hof." }
+            ],
+            de: [
+                { date: "Mai 2021", title: "Erster Vorschlag", content: "Die Europäische Kommission führt ChatControl als Teil der EU-Kinderschutzstrategie ein, um private Kommunikation auf CSAM zu scannen." },
+                { date: "2023", title: "Erweiterte Reichweite", content: "Vorschlag erweitert, um 'Terrorismus' und 'Material zur Ausbeutung von Kindern' jenseits von CSAM abzudecken, erheblich vergrößerte Überwachungsreichweite." },
+                { date: "Juni 2023", title: "Abstimmung im EU-Parlament", content: "EU-Parlament stimmt für die Genehmigung von ChatControl 2.0 mit 376 Stimmen dafür und 245 dagegen, trotz erheblichen Widerstands." },
+                { date: "Laufend", title: "Ratsverhandlungen", content: "EU-Rat verhandelt über die endgültigen Implementierungsbedingungen. Implementierung erwartet 2024-2025 mit möglichen Rechtsmitteln beim EU-Gericht." }
+            ]
+        };
+
+        // DOM Elements
+        const languageSelector = document.getElementById('languageSelector');
+        const quizContainer = document.getElementById('quizContainer');
+        const timelineContainer = document.getElementById('timelineContainer');
+        const factsContainer = document.getElementById('factsContainer');
+        const quizBtn = document.getElementById('quizBtn');
+        const timelineBtn = document.getElementById('timelineBtn');
+        const factsBtn = document.getElementById('factsBtn');
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        const timelineElement = document.querySelector('.timeline');
+
+        // Game state
+        let currentGame = null;
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedLanguage = 'en';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLanguage();
+            activateGame('facts');
         });
 
-        // Initialize when page loads
-        window.addEventListener('DOMContentLoaded', () => {
-            initVisualization();
+        // Language selector change
+        languageSelector.addEventListener('change', () => {
+            selectedLanguage = languageSelector.value;
+            updateLanguage();
+            if (currentGame === 'quiz') {
+                activateGame('quiz');
+            }
+        });
+
+        // Game buttons
+        quizBtn.addEventListener('click', () => activateGame('quiz'));
+        timelineBtn.addEventListener('click', () => activateGame('timeline'));
+        factsBtn.addEventListener('click', () => activateGame('facts'));
+
+        // Quiz navigation
+        nextBtn.addEventListener('click', () => {
+            currentQuestion++;
+            if (currentQuestion < quizData[selectedLanguage].length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        // Activate game
+        function activateGame(gameType) {
+            currentGame = gameType;
             
-            // Set up language switching for text areas
-            const plaintextEn = document.getElementById('plaintext');
-            const plaintextDe = document.getElementById('plaintext-de');
+            // Hide all games
+            quizContainer.classList.remove('active-game');
+            timelineContainer.classList.remove('active-game');
+            factsContainer.classList.remove('active-game');
             
-            plaintextEn.addEventListener('input', () => {
-                if (document.querySelector('.lang-btn.active').textContent.toLowerCase() === 'en') {
-                    plaintextDe.value = plaintextEn.value;
-                }
+            // Show selected game
+            if (gameType === 'quiz') {
+                quizContainer.classList.add('active-game');
+                currentQuestion = 0;
+                score = 0;
+                loadQuestion();
+            } else if (gameType === 'timeline') {
+                timelineContainer.classList.add('active-game');
+                loadTimeline();
+            } else {
+                factsContainer.classList.add('active-game');
+            }
+        }
+
+        // Load quiz question
+        function loadQuestion() {
+            const currentQuizData = quizData[selectedLanguage][currentQuestion];
+            questionElement.textContent = currentQuizData.question;
+            optionsElement.innerHTML = '';
+            
+            currentQuizData.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                optionElement.textContent = option;
+                optionElement.dataset.index = index;
+                
+                optionElement.addEventListener('click', () => {
+                    // Remove previous selections
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Check answer
+                    if (index === currentQuizData.correct) {
+                        optionElement.classList.add('correct');
+                        score++;
+                    } else {
+                        optionElement.classList.add('incorrect');
+                    }
+                    
+                    // Show correct answer
+                    document.querySelector(`.option[data-index="${currentQuizData.correct}"]`).classList.add('correct');
+                    
+                    // Disable further clicks
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.style.pointerEvents = 'none';
+                    });
+                    
+                    // Update progress bar
+                    const progress = ((currentQuestion + 1) / quizData[selectedLanguage].length) * 100;
+                    progressBar.style.width = `${progress}%`;
+                });
+                
+                optionsElement.appendChild(optionElement);
             });
             
-            plaintextDe.addEventListener('input', () => {
-                if (document.querySelector('.lang-btn.active').textContent.toLowerCase() === 'de') {
-                    plaintextEn.value = plaintextDe.value;
-                }
+            // Update progress bar
+            const progress = (currentQuestion / quizData[selectedLanguage].length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show quiz results
+        function showResults() {
+            const percentage = Math.round((score / quizData[selectedLanguage].length) * 100);
+            questionElement.innerHTML = `
+                <h3>Quiz Completed!</h3>
+                <p>You scored ${score} out of ${quizData[selectedLanguage].length} (${percentage}%)</p>
+                <p style="margin-top: 20px;">${percentage >= 70 
+                    ? "Great job! You understand the privacy implications of ChatControl 2.0" 
+                    : "Learn more about ChatControl 2.0 to understand why these issues matter"}</p>
+            `;
+            optionsElement.innerHTML = '';
+            nextBtn.textContent = translations[selectedLanguage].takeAction;
+            nextBtn.onclick = () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        // Load timeline data
+        function loadTimeline() {
+            timelineElement.innerHTML = '';
+            timelineData[selectedLanguage].forEach(event => {
+                const timelineEvent = document.createElement('div');
+                timelineEvent.classList.add('timeline-event');
+                timelineEvent.innerHTML = `
+                    <div class="timeline-date">${event.date}</div>
+                    <div class="timeline-content">
+                        <h4>${event.title}</h4>
+                        <p>${event.content}</p>
+                    </div>
+                `;
+                timelineElement.appendChild(timelineEvent);
+            });
+        }
+
+        // Update language text
+        function updateLanguage() {
+            // Header texts
+            document.querySelector('#about .section-title').textContent = translations[selectedLanguage].whatIs;
+            
+            // Card texts
+            const cards = document.querySelectorAll('.card');
+            cards[0].querySelector('h3').textContent = translations[selectedLanguage].privacyInvasion;
+            cards[0].querySelector('p').textContent = translations[selectedLanguage].privacyInvasionDesc;
+            cards[1].querySelector('h3').textContent = translations[selectedLanguage].massSurveillance;
+            cards[1].querySelector('p').textContent = translations[selectedLanguage].massSurveillanceDesc;
+            cards[2].querySelector('h3').textContent = translations[selectedLanguage].legalConcerns;
+            cards[2].querySelector('p').textContent = translations[selectedLanguage].legalConcernsDesc;
+            
+            // Info section texts
+            document.querySelector('.info-section .info-text h2').textContent = translations[selectedLanguage].globalImpact;
+            document.querySelector('.info-section .info-text p').textContent = translations[selectedLanguage].impactDesc;
+            document.querySelector('.info-section .info-text ul li:nth-child(1)').textContent = translations[selectedLanguage].impactList1;
+            document.querySelector('.info-section .info-text ul li:nth-child(2)').textContent = translations[selectedLanguage].impactList2;
+            document.querySelector('.info-section .info-text ul li:nth-child(3)').textContent = translations[selectedLanguage].impactList3;
+            document.querySelector('.info-section .info-text ul li:nth-child(4)').textContent = translations[selectedLanguage].impactList4;
+            document.querySelector('.info-section .info-text p.glow').textContent = translations[selectedLanguage].legalConflict;
+            
+            // Interactive section texts
+            document.querySelector('#interactive .section-title').textContent = translations[selectedLanguage].interactiveLearning;
+            quizBtn.textContent = translations[selectedLanguage].privacyQuiz;
+            timelineBtn.textContent = translations[selectedLanguage].legislativeTimeline;
+            factsBtn.textContent = translations[selectedLanguage].keyFacts;
+            
+            // Facts cards
+            const factCards = document.querySelectorAll('#factsContainer .card');
+            if (factCards.length > 0) {
+                factCards[0].querySelector('h3').textContent = translations[selectedLanguage].noSuspicion;
+                factCards[0].querySelector('p').textContent = translations[selectedLanguage].noSuspicionDesc;
+                factCards[1].querySelector('h3').textContent = translations[selectedLanguage].globalBackdoor;
+                factCards[1].querySelector('p').textContent = translations[selectedLanguage].globalBackdoorDesc;
+                factCards[2].querySelector('h3').textContent = translations[selectedLanguage].encryptionDestruction;
+                factCards[2].querySelector('p').textContent = translations[selectedLanguage].encryptionDestructionDesc;
+                factCards[3].querySelector('h3').textContent = translations[selectedLanguage].legalContradictions;
+                factCards[3].querySelector('p').textContent = translations[selectedLanguage].legalContradictionsDesc;
+            }
+            
+            // Resources section
+            document.querySelector('#resources .section-title').textContent = translations[selectedLanguage].takeAction;
+            const resourceCards = document.querySelectorAll('#resources .card');
+            if (resourceCards.length > 0) {
+                resourceCards[0].querySelector('h3').textContent = translations[selectedLanguage].readMore;
+                resourceCards[0].querySelector('p').textContent = translations[selectedLanguage].privacyInvasionDesc;
+                resourceCards[1].querySelector('h3').textContent = translations[selectedLanguage].supportProtest;
+                resourceCards[1].querySelector('p').textContent = translations[selectedLanguage].massSurveillanceDesc;
+                resourceCards[2].querySelector('h3').textContent = translations[selectedLanguage].secureCommunication;
+                resourceCards[2].querySelector('p').textContent = translations[selectedLanguage].legalConcernsDesc;
+                resourceCards[0].querySelector('.cta-button').textContent = translations[selectedLanguage].readMore;
+                resourceCards[1].querySelector('.cta-button').textContent = translations[selectedLanguage].supportProtest;
+                resourceCards[2].querySelector('.cta-button').textContent = translations[selectedLanguage].secureCommunication;
+            }
+            
+            // Footer text
+            document.querySelector('.footer-links a:nth-child(4)').textContent = translations[selectedLanguage].footerText;
+        }
+
+        // Glowing pulse effect for header elements
+        document.querySelectorAll('.navbar a, select').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.classList.add('pulse');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('pulse');
             });
         });
     </script>
